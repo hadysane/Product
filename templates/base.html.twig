@@ -14,6 +14,72 @@
         {% endblock %}
     </head>
     <body>
+         <header>
+        <div class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header col-md-3 col-lg-2">
+                    <a class="navbar-brand" href="{{ path('home') }}">{# {{ path('homepage') }} #}
+                       Product LifeStyle
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+
+
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                            <li>
+                                <a href='{{ path('category_index') }}'> Categories Management  </a>
+                            </li>
+
+                            <li>
+                                <a href='{{ path('product_index') }}'> Product Management </a>
+                            </li>
+
+
+                            <li>
+                                <a> <i class="fas fa-user"></i>  {{ app.user.email}}</a>
+                            </li>
+
+                            <li>
+                                
+                                <a href="{{ path('app_logout') }}">
+                                    <i class="fa fa-sign-in"></i>
+                                    {# {{ 'menu.homepage'|trans }} #}
+                                    Logout
+                                </a>
+                                
+                            </li>
+
+                            {% else %}
+
+                           
+
+                            <li>
+                                <a href="{{ path('login') }}">
+                                    {# {{ 'menu.homepage'|trans }} #}
+                                    Login
+                                </a>
+                            </li>
+
+                             <li>
+                                <a href="{{ path('app_register') }}" > 
+                                    {# {{ 'menu.homepage'|trans }} #}
+                                    Sign up
+                                </a>
+                            </li>
+                            {% endif %}
+
+
+                            
+                        
+
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
         {% block body %}{% endblock %}
     </body>
 </html>
